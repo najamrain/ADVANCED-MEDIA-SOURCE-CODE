@@ -174,6 +174,27 @@
              {% csrf_token %} {{ form.as_p }}
              <input type="submit" class="btn btn-success" value="Submit Value">
         </form>  -->
+        <h2 class="text-center my-4"><span class="font-weight-bold text-success">"</span>WELCOME TO ADVANCED MEDIA<span class="font-weight-bold text-success">"</span></h2>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+        <h3 class=" text-danger ">How to use this application?</h3>
+
+              <ol class="-d-block">
+                <li>Create your account.</li>
+                <li>Once the account is created ,automatically it will direct you to the login page.</li>
+                <li>Onced you loged in you are allowed to add , update and delete the information.</li>
+                <li>Any operation you perform first system will check user is logged in or not. You cant perform any operation until you log in to this application.</li>
+              </ol>
+<a href="signup" style="text-decoration: underline;" class="btn btn-white text-primary ">Dont have Acoount?</a>
+<a href="signin" style="text-decoration: underline;" class="btn btn-white text-primary ">Already have Acoount?</a>
+
+            </div>
+          </div>
+        </div>
+      
+
+       
       {% endblock %}
     </div>
   </body>

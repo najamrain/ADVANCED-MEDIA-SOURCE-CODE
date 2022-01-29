@@ -8,29 +8,29 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">S.No</th>
-            <th scope="col">Name</th>
-            <th scope="col">Date of bith</th>
-            <th scope="col">Mobile</th>
-            <th scope="col">Note</th>
-            <th scope="col"></th>
+            <th scope="col " class="text-success">S.No</th>
+            <th scope="col " class="text-success" >Name</th>
+            <th scope="col " class="text-success">Date of bith</th>
+            <th scope="col " class="text-success">Mobile</th>
+            <th scope="col " class="text-success">Note</th>
+            <th scope="col " class="text-success">Action</th>
         </tr>
     </thead>
     <tbody>
     
         {% for a in get %} 
         <tr>
-            <th scope="row">{{ a.id }}</th>
+            <th scope="row">{{ forloop.counter }}</th>
             <td>{{ a.name }}</td>
             <td>{{ a.dob }}</td>
             <td>{{ a.mobile }}</td>
             <td>{{ a.note }}</td>
-            <td><a href="{% url 'updatebaba' a.id %}" class="btn btn-success d-inline ">Edit</a>
+            <td><a href="{% url 'updatebaba' a.id %}" class="btn btn-success d-inline "><i class="fas fa-edit"></i></a>
                 <!-- <form action="{% url 'deletedata' a.id %}" method="post" class="d-inline"> 
                     {% csrf_token %} 
                     <input type="submit" class="btn btn-danger" value="Delete">
                 </form> -->
-                <a href="{% url 'deletedata' a.id %}" class="btn btn-danger my-1">delete</a>
+                <a href="{% url 'deletedata' a.id %}" class="btn btn-danger my-1"><i class="fas fa-trash"></i></a>
             </td>
         </tr>
         {% endfor %} 

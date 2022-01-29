@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Update Previous Already Submitted Information</h2>
+<div class="container py-5">
+    <div class="row d-flex flex-column align-items-center">
+        <div class="col-md-6">
+<h2>Update Information</h2>
 <form action="" method="POST"> 
     {% csrf_token %} 
     {{ form.as_p }}
-    <input type="submit" value="Update" class="btn btn-success">
-    <!-- <a href="/display" class="btn btn-primary d-inline">Discard</a> -->
-</form> {% endblock %}
+    <input type="submit" value="UPDATE INFORMATION" class="btn btn-block btn-dark mt-1 ">
+
+    <a href="/display" class="btn btn-block btn-warning text-light">DISCARD CHANGE</a>
+</form> 
+        </div>
+        </div>
+        </div>
+{% endblock %}
