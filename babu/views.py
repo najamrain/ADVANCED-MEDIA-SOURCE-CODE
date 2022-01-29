@@ -56,7 +56,11 @@ def addShow(request):
             form = myForm(request.POST)
 
             if form.is_valid():
-                # name = form.cleaned_data['name']
+                mobile = form.cleaned_data['mobile']
+                print("mobile lenghth",   len(mobile))
+                if len(mobile)<8:
+                    messages.info(request, "Please enter 8 digit number")
+                    return redirect("/as")
                 # email = form.cleaned_data['email']
                 # if student.objects.filter(name=name).exists():
                 #     messages.info(request, "Name already taken")
@@ -66,10 +70,10 @@ def addShow(request):
                 #     return redirect("/as")
 
                 # else:
-                    form.save()
-                    messages.info(request, "ONE RECORD ADDED TO DATABASE")
+                form.save()
+                messages.info(request, "ONE RECORD ADDED TO DATABASE")
 
-                    return redirect("/display")
+                return redirect("/display")
 
         else:
             form = myForm()
@@ -91,6 +95,13 @@ def update(request, id):
         get = student.objects.get(pk=id)
         form = myForm(request.POST, instance=get)
         if form.is_valid():
+            mobile = form.cleaned_data['mobile']
+            print("mobile lenghth",   len(mobile))
+            if len(mobile)<8:
+                messages.info(request, "Please enter 8 digit number")
+                get = student.objects.get(pk=id)
+                form = myForm(instance=get)
+                return render(request, "update.html", {"form": form})
             form.save()
             print("update function working")
             messages.info(request, "ONE RECORD UPDATED")
@@ -103,17 +114,23 @@ def update(request, id):
 
 
 def search(request):
-    if request.method == "POST":
-        name = request.POST['name']
-        # name_icontains more useful than this name_iexact
-        get = student.objects.filter(name__icontains=name)
-        # print(get)
-        if get.exists():
-            return render(request, "display.html", {"get": get})
+    if request.user.is_authenticated:
 
-        else:
-            messages.info(request, "No Match Founf")
-            return redirect("/display")
+        if request.method == "POST":
+            name = request.POST['name']
+            # name_icontains more useful than this name_iexact
+            get = student.objects.filter(name__icontains=name)
+            # print(get)
+            if get.exists():
+                return render(request, "display.html", {"get": get})
+
+            else:
+                messages.info(request, "No Match Founf")
+                return redirect("/")
+    else:
+        messages.info(request, "You need to login first")
+        return redirect("/")
+
 
 
 def signup(request):
