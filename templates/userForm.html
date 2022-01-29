@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>User Sign Up Form</h2>
-<form action="" method="post"> 
-    {% csrf_token %} 
-    {{ userForm1 }}
-<input type="submit" value="Submit Info" class="btn btn-success mt-1 ">
-</form> 
+
+<div class="container py-5">
+    <div class="row d-flex flex-column align-items-center">
+        <div class="col-md-6">
+<h2 class="text-center">--User Sign Up Form--</h2>
+
+            <form action="" method="post"> 
+                {% csrf_token %} 
+                {{ userForm1 }}
+            <input type="submit" value="SUBMIT FORM" class="btn btn-block btn-dark mt-1 ">
+            </form> 
+        </div>
+    </div>
+  
+</div>
+
 {% endblock %}

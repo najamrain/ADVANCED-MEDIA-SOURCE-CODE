@@ -122,28 +122,27 @@ def signup(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
-        password = request.POST['password']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
 
-        # form = UserForm(request.POST)
-        # return HttpResponse(form)
-        # if form.is_valid():
-        # username = form.cleaned_data['username']
-        # first_name = form.cleaned_data['first_name']
-        # last_name = form.cleaned_data['last_name']
-        # email = form.cleaned_data['email']
-        # password = form.cleaned_data['password']
-        if User.objects.filter(username=username).exists():
-            messages.info(request, "Username Taken Already")
-            return redirect("/signup")
-        elif User.objects.filter(email=email).exists():
-            messages.info(request, "Email Already Exists")
-            return redirect("/signup")
+        if password1 == password2:
+
+            if User.objects.filter(username=username).exists():
+                messages.info(request, "Username Taken Already")
+                return redirect("/signup")
+            elif User.objects.filter(email=email).exists():
+                messages.info(request, "Email Already Exists")
+                return redirect("/signup")
+            else:
+                user = User.objects.create_user(
+                    username=username, first_name=first_name, last_name=last_name, email=email, password=password1)
+                user.save()
+                messages.info(request, "User Created Successfully")
+                return redirect("/signin")
         else:
-            user = User.objects.create_user(
-                username=username, first_name=first_name, last_name=last_name, email=email, password=password)
-            user.save()
-            messages.info(request, "User Created Successfully")
-            return redirect("/")
+                messages.info(request, "Password didnt match")
+                return redirect("/signup")
+
 
     else:
         userForm1 = UserForm()
