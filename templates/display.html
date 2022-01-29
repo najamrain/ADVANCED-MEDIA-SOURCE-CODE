@@ -1,0 +1,48 @@
+{% extends "base.html" %} 
+<!-- {% block nav %}
+
+{% endblock %} -->
+
+{% block content %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date of bith</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Note</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+    
+        {% for a in get %} 
+        <tr>
+            <th scope="row">{{ a.id }}</th>
+            <td>{{ a.name }}</td>
+            <td>{{ a.dob }}</td>
+            <td>{{ a.mobile }}</td>
+            <td>{{ a.note }}</td>
+            <td><a href="{% url 'updatebaba' a.id %}" class="btn btn-success d-inline ">Edit</a>
+                <!-- <form action="{% url 'deletedata' a.id %}" method="post" class="d-inline"> 
+                    {% csrf_token %} 
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form> -->
+                <a href="{% url 'deletedata' a.id %}" class="btn btn-success my-1">delete</a>
+            </td>
+        </tr>
+        {% endfor %} 
+
+
+        
+        
+    </tbody>
+    
+</table> 
+
+        <h6>{{ nnn }} <a href="/as" style="text-decoration: underline;">Click Here To Add Data</a></h6>
+    
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="/signin" method="POST"> 
+    {% csrf_token %}
+    <h2>User Login Form</h2>
+    <label for="id_name">Name:</label>
+    <input type="text" name="username" class="form-control" maxlength="50" required="" id="id_name">
+<!-- <label for="id_email">Email:</label>
+<input type="email" name="email" class="form-control" maxlength="50" required="" id="id_email"> -->
+<label for="id_password">Password:</label>
+<input type="password" name="password" class="form-control" maxlength="50" required="" id="id_password">
+<input type="submit" value="Submit Info" class="btn btn-success mt-1 ">
+<!-- <input type="submit" value="Dont have Account?"  class="btn btn-white text-primary text-decoration-underline mt-1 "> -->
+<a href="signup" style="text-decoration: underline;" class="btn btn-white text-primary ">Dont have Acoount?</a>
+</form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Update Previous Already Submitted Information</h2>
+<form action="" method="POST"> 
+    {% csrf_token %} 
+    {{ form.as_p }}
+    <input type="submit" value="Update" class="btn btn-success">
+    <!-- <a href="/display" class="btn btn-primary d-inline">Discard</a> -->
+</form> {% endblock %}
